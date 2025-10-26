@@ -1,18 +1,14 @@
-// backend/db.js
-require('dotenv').config();
+
 const mongoose = require('mongoose');
 
-const uri = process.env.MONGODB_URI;
+const uri = 'mongodb+srv://premrawat9873:9873371160@prem.dei7zne.mongodb.net/';
 if (!uri) {
     throw new Error('MONGODB_URI not set in .env');
 }
 
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(uri) // removed deprecated options
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 const userSchema = new mongoose.Schema({
     username: {
