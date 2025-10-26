@@ -1,6 +1,18 @@
 // backend/db.js
+require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://premrawat9873:9873371160@prem.dei7zne.mongodb.net/payement-app")
+
+const uri = process.env.MONGODB_URI;
+if (!uri) {
+    throw new Error('MONGODB_URI not set in .env');
+}
+
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -48,6 +60,6 @@ const User = mongoose.model('User', userSchema);
 const Account = mongoose.model('Account', accoutSchema);
 
 module.exports = {
-	User
-    ,Account
+    User,
+    Account
 };
