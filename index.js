@@ -3,6 +3,10 @@ const cors = require('cors');
 const app = express();
 const mainRouter = require('./router/index');
 
+
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -25,5 +29,6 @@ process.on('uncaughtException', (err) => {
   console.error('💥 Uncaught Exception:', err);
 });
 
-// Start server
-app.listen(3000, () => console.log("✅ Server is running on port 3000"));
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
