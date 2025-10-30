@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const uri = 'mongodb+srv://premrawat9873:9873371160@prem.dei7zne.mongodb.net/';
+const uri = 'mongodb+srv://premrawat9873:9873371160@prem.dei7zne.mongodb.net/payement-app';
 if (!uri) {
     throw new Error('MONGODB_URI not set in .env');
 }
